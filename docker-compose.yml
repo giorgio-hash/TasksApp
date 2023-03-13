@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  frontend:
+    depends_on: 
+      - backend
+    build: ./frontend
+    ports:
+      - 8080:8080
+    networks:
+      - frontend
+      - backend 
+
+  backend:
+    build: ./backend
+    environment:
+      - ASPNETCORE_URLS=http://backend:5054
+    networks:
+      - backend
+      - database
+
+  db:
+    image: mongo:6.0.4
+    ports:
+      - 27017:27017
+    volumes:
+      - task_tracker:/data/db
+    networks:
+      - database
+
+
+volumes:
+  task_tracker:
+
+networks:
+  frontend:
+  backend:
+  database:
+  
