@@ -10,7 +10,7 @@ services:
     networks:
       - frontend
       - backend 
-    image: gchirico1/tasksapp:1
+    image: gchirico1/tasksapp:2
 
   backend:
     build: ./backend
@@ -19,7 +19,7 @@ services:
     networks:
       - backend
       - database
-    image: gchirico1/tasksbackend:1
+    image: gchirico1/tasksbackend:2
 
   db:
     image: mongo:6.0.4
